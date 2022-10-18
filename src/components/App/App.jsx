@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
 import './App.css';
+import GeneratePage from '../GeneratePage/GeneratePage';
 
 function App() {
   const dispatch = useDispatch();
@@ -80,6 +81,13 @@ function App() {
               // Otherwise, show the login page
               <LoginPage />
             }
+          </Route>
+
+          <Route
+            exact
+            path="/generate/page"
+          >
+            <GeneratePage />
           </Route>
 
           <Route

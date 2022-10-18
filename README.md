@@ -123,5 +123,5 @@ Customize this ReadMe and the code comments in this project to read less like a 
 ## Checklist
 
 [x] npm install, create database and .env files
-[] after login go to home page as default
+[]
 
