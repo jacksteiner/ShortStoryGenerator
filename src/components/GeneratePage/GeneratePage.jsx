@@ -9,10 +9,16 @@ function GeneratePage() {
   // a default value of 'Functional Component'
   const store = useSelector((store) => store);
   const [heading, setHeading] = useState('Generator will go here!');
+  const [storyList, setStoryList] = useState([]);
+  const [promptName, setPromptName] = useState('');
 
   return (
     <div>
       <h2>{heading}</h2>
+      <form>
+        <input value={promptName} onChange={(e) => setPromptName(e.target.value)} type="text" placeholder='Prompt Goes Here!' />
+        <input type="submit" />
+      </form>
     </div>
   );
 }
