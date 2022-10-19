@@ -7,14 +7,11 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
   // GET route code here
-  const query = 'SELECT * FROM generation';
-  pool.query(query)
-    .then( result => {
-        res.send(result.rows);
-    })
-    .catch(err => {
-        console.log('Error in Get story', err);
-        res.sendStatus(500)
+    pool.query('SELECT * FROM "generation";').then((results) => {
+        res.send(results.rows);
+    }).catch((error) => {
+        console.log('Error in get story', error);
+        res.sendStatus(500);
     })
 });
 
