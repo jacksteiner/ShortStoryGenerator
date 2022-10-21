@@ -61,6 +61,11 @@ router.get('/:promptName', async (req, res) => {
     }
 });
 
+// router.put(`/favorite/:id`, (req, res) => {
+//     console.log(req.params);
+
+// })
+
 
 
 /**

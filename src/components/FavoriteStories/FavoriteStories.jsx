@@ -32,6 +32,17 @@ function FavoriteStories() {
   return (
     <div>
       <h2>{heading}</h2>
+      <div>
+        <h2>Test Data</h2>
+        {
+          storyList.map(generation => {
+            return <div>
+              {generation.story} {generation.prompt}
+              <button onClick={() => favoriteStory()}>Favorite</button>
+            </div>
+          })
+        }
+        </div> 
     </div>
   );
 }

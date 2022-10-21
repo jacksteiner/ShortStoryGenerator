@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import './GeneratePage.css';
 import axios from 'axios';
 
 // Basic functional component structure for React with default state
@@ -45,6 +46,16 @@ function GeneratePage() {
     setPromptName('');
   }
 
+  // const favoriteStory = (storyId) => {
+  //   // put to go here
+  //   axios.put(`/api/story/${storyId}`).then(() => {
+  //     fetchStoryList();
+  //   }).catch((e) => {
+  //     console.log(e);
+  //     alert('Something went wrong');
+  //   })
+  // }
+
   return (
     <div>
       <h2>{heading}</h2>
@@ -56,7 +67,10 @@ function GeneratePage() {
         <h2>Test Data</h2>
         {
           storyList.map(generation => {
-            return <div>{generation.story}{generation.prompt}</div>
+            return <div>
+              {generation.story} {generation.prompt}
+              <button onClick={() => favoriteStory()}>Favorite</button>
+            </div>
           })
         }
         </div> 
