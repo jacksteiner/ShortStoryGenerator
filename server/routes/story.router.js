@@ -42,9 +42,12 @@ router.get('/:promptName', async (req, res) => {
             story = responseFromOpenAI.data.choices[0].text
         }
         // for testing only
-        // if (prompt === 'Dog'){
-        //     story = 'Something not edgy'
-        // }
+        if (prompt === 'Dog'){
+            story = 'I woke up hearing scratching at the door. I looked to my side and our dog was sitting next to me.'
+        }
+        if (prompt === 'Cat'){
+            story = 'My cat was staring at something on the ceiling. I looked up and saw a dark moving shadow.'
+        }
         console.log('story', story);
         // console.log('choices', choices);
         await pool.query(queryText, [prompt, req.user.id, story])

@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 
 import './App.css';
 import GeneratePage from '../GeneratePage/GeneratePage';
+import FavoriteStories from '../FavoriteStories/FavoriteStories';
 
 function App() {
   const dispatch = useDispatch();
@@ -92,6 +93,13 @@ function App() {
 
           <Route
             exact
+            path="/favorite/stories"
+          >
+            <FavoriteStories />
+          </Route>
+
+          <Route
+            exact
             path="/registration"
           >
             {user.id ?
@@ -116,6 +124,7 @@ function App() {
               // Otherwise, show the Landing page
               <LandingPage />
             }
+            
           </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}

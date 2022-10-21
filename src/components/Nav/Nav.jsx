@@ -37,6 +37,10 @@ function Nav() {
             <Link className='navLink' to='/generate/page'>
               Generate
             </Link>
+
+            <Link className='navLink' to='/favorite/stories'>
+              Favorites
+            </Link>
           </>
         )}
 
