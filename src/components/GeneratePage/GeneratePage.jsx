@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
@@ -11,11 +11,15 @@ function GeneratePage() {
   const [heading, setHeading] = useState('Generator will go here!');
   const [storyList, setStoryList] = useState([]);
   const [promptName, setPromptName] = useState('');
+  const [generated, setGenerated] = useState('');
+  
 
   useEffect(() => {
     fetchStoryList();
+    // fetchGeneration();
   }, []);
 
+  // test that database can get story
   const fetchStoryList = () => {
     console.log('fetchStoryList is called')
     axios.get('/api/story').then((response) => {
@@ -26,10 +30,24 @@ function GeneratePage() {
     });
   }
 
+  const fetchGeneration = (e) => {
+    e.preventDefault();
+    console.log('in fetchGeneration');
+    axios.get(`/api/story/${promptName}`)
+    .then(response => {
+      console.log('This is the data', response.data)
+      setGenerated(response.data)
+      fetchStoryList();
+    }).catch(error => {
+      console.log(error);
+      alert('Something went wrong in fetchGeneration');
+    });
+  }
+
   return (
     <div>
       <h2>{heading}</h2>
-      <form>
+      <form onSubmit={fetchGeneration}>
         <input value={promptName} onChange={(e) => setPromptName(e.target.value)} type="text" placeholder='Prompt Goes Here!' />
         <input type="submit" />
       </form>
@@ -40,7 +58,16 @@ function GeneratePage() {
             return <div>{generation.story}{generation.prompt}</div>
           })
         }
-        </div>      
+        </div> 
+        <div>
+          <h2>Test Generations</h2>
+          {/* {
+            generated.map(generatedStory => {
+              return <div>{generatedStory.prompt}</div>
+            })
+          } */}
+        </div>
+
     </div>
   );
 }
