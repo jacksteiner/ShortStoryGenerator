@@ -12,7 +12,7 @@ function GeneratePage() {
   const [storyList, setStoryList] = useState([]);
   const [promptName, setPromptName] = useState('');
   const [generated, setGenerated] = useState('');
-  
+  const inputRef = useRef();
 
   useEffect(() => {
     fetchStoryList();
@@ -42,6 +42,7 @@ function GeneratePage() {
       console.log(error);
       alert('Something went wrong in fetchGeneration');
     });
+    setPromptName('');
   }
 
   return (
