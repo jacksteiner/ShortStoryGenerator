@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './GeneratePage.css';
 import axios from 'axios';
+import "98.css"
 
 // Basic functional component structure for React with default state
 // value setup. When making a new component be sure to replace the
@@ -63,15 +64,33 @@ function GeneratePage() {
         <input value={promptName} onChange={(e) => setPromptName(e.target.value)} type="text" placeholder='Prompt Goes Here!' />
         <input type="submit" />
       </form>
+      <div class="field-row">
+          <label for="text17">Occupation</label>
+          <input id="text17" type="text" />
+      </div>
       <div>
         <h2>Test Data</h2>
         {
           storyList.map(generation => {
-            return <div>
-              {generation.story} {generation.prompt}
-              <button onClick={() => favoriteStory()}>Favorite</button>
+            return (
+            <div style={{ width: 700 }} className="window">
+              <div className='title-bar'>
+                <div className='title-bar-text'>Story</div>
+                <div className='title-bar-controls'>
+                  <button aria-label='Minimize' />
+                  <button aria-label='Maximize' />
+                  <button aria-label='Close' />
+                </div>
+              </div>
+              <div className='window-body'>
+                <p style={{textAlign: "center", fontSize: 15, }}>{generation.story}</p>
+                <p style={{textAlign: "center", fontSize: 15, color: 'blue' }}>Prompt: {generation.prompt}</p>
+                <div className="field-row" style={{ justifyContent: 'center' }}>
+                  <button>Favorite</button>
+                </div>
+              </div>
             </div>
-          })
+          )})
         }
         </div> 
         <div>
@@ -88,3 +107,11 @@ function GeneratePage() {
 }
 
 export default GeneratePage;
+
+// Testing 98.css(this is backup code)
+// <div>
+// {generation.story}
+//  {generation.prompt}
+//  <br></br>
+// <button onClick={() => favoriteStory()}>Favorite</button>
+// </div>

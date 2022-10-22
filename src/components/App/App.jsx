@@ -24,6 +24,7 @@ import './App.css';
 import GeneratePage from '../GeneratePage/GeneratePage';
 import FavoriteStories from '../FavoriteStories/FavoriteStories';
 
+
 function App() {
   const dispatch = useDispatch();
 
@@ -124,7 +125,7 @@ function App() {
               // Otherwise, show the Landing page
               <LandingPage />
             }
-            
+
           </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}
