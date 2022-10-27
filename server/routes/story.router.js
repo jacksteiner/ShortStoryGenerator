@@ -14,13 +14,24 @@ const openai = new OpenAIApi(configuration);
  */
 router.get('/', (req, res) => {
   // GET route code here
-    pool.query('SELECT * FROM "generation";').then((results) => {
+    pool.query('SELECT * FROM "generation" ORDER BY "created_at" DESC;').then((results) => {
         res.send(results.rows);
     }).catch((error) => {
         console.log('Error in get story', error);
         res.sendStatus(500);
     })
 });
+
+router.get('/favorite', (req, res) => {
+    // GET route code here
+      pool.query('SELECT * FROM "generation" WHERE "favorite" = true ORDER BY "created_at" DESC;').then((results) => {
+          res.send(results.rows);
+      }).catch((error) => {
+          console.log('Error in get story', error);
+          res.sendStatus(500);
+      })
+  });
+  
 
 router.get('/:promptName', async (req, res) => {
     const prompt = req.params.promptName
@@ -36,7 +47,7 @@ router.get('/:promptName', async (req, res) => {
             presence_penalty: 0.0,
         });
         const queryText = `INSERT INTO "generation" ("prompt", "user_id", "story")
-                            VALUES ($1, $2, $3);`
+                            VALUES ($1, $2, $3) returning "id";`
         let story = 'No stories found'
         if (responseFromOpenAI.data.choices.length>0){
             story = responseFromOpenAI.data.choices[0].text
@@ -50,9 +61,9 @@ router.get('/:promptName', async (req, res) => {
         }
         console.log('story', story);
         // console.log('choices', choices);
-        await pool.query(queryText, [prompt, req.user.id, story])
+        const result = await pool.query(queryText, [prompt, req.user.id, story])
         console.log(responseFromOpenAI, 'response from openAI')
-        res.send(responseFromOpenAI.data);
+        res.send({id:result.rows[0].id, prompt, user_id: req.user.id, story:story});
 
     } catch (e) {
         

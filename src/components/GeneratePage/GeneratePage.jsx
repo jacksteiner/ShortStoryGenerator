@@ -17,14 +17,14 @@ function GeneratePage() {
   const inputRef = useRef();
 
   useEffect(() => {
-    fetchStoryList();
+    // fetchStoryList();
     // fetchGeneration();
   }, []);
 
   // test that database can get story
   const fetchStoryList = () => {
     console.log('fetchStoryList is called')
-    axios.get('/api/story').then((response) => {
+    axios.get(`/api/story`).then((response) => {
       setStoryList(response.data)
     }).catch((e) => {
       console.log(e);
@@ -39,7 +39,8 @@ function GeneratePage() {
     .then(response => {
       console.log('This is the data', response.data)
       setGenerated(response.data)
-      fetchStoryList();
+      setStoryList([response.data, ...storyList]);
+      // fetchStoryList();
     }).catch(error => {
       console.log(error);
       alert('Something went wrong in fetchGeneration');
@@ -64,12 +65,12 @@ function GeneratePage() {
         <input value={promptName} onChange={(e) => setPromptName(e.target.value)} type="text" placeholder='Prompt Goes Here!' />
         <input type="submit" />
       </form>
-      <div class="field-row">
+      {/* <div class="field-row">
           <label for="text17">Occupation</label>
           <input id="text17" type="text" />
-      </div>
+      </div> */}
       <div>
-        <h2>Test Data</h2>
+        {/* <h2>Test Data</h2> */}
         {
           storyList.map(generation => {
             return (
@@ -83,8 +84,8 @@ function GeneratePage() {
                 </div>
               </div>
               <div className='window-body'>
-                <p style={{textAlign: "center", fontSize: 15, }}>{generation.story}</p>
-                <p style={{textAlign: "center", fontSize: 15, color: 'blue' }}>Prompt: {generation.prompt}</p>
+                <p style={{textAlign: "center", fontSize: 25, }}>{generation.story}</p>
+                <p style={{textAlign: "center", fontSize: 25, color: 'blue' }}>Prompt: {generation.prompt}</p>
                 <div className="field-row" style={{ justifyContent: 'center' }}>
                   <button>Favorite</button>
                 </div>
@@ -94,7 +95,7 @@ function GeneratePage() {
         }
         </div> 
         <div>
-          <h2>Test Generations</h2>
+          {/* <h2>Test Generations</h2> */}
           {/* {
             generated.map(generatedStory => {
               return <div>{generatedStory.prompt}</div>

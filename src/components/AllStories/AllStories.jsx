@@ -5,7 +5,7 @@ import axios from 'axios';
 // Basic functional component structure for React with default state
 // value setup. When making a new component be sure to replace the
 // component name TemplateFunction with the name for the new component.
-function FavoriteStories() {
+function AllStories() {
   // Using hooks we're creating local state for a "heading" variable with
   // a default value of 'Functional Component'
   const store = useSelector((store) => store);
@@ -20,12 +20,17 @@ function FavoriteStories() {
   // test that database can get story
   const fetchStoryList = () => {
     console.log('fetchStoryList is called')
-    axios.get('/api/story/favorite').then((response) => {
+    axios.get('/api/story').then((response) => {
       setStoryList(response.data)
     }).catch((e) => {
       console.log(e);
       alert('Something went wrong');
     });
+  }
+
+  const favoriteStory = (id) => {
+    console.log('favorite story', id)
+    // in .then call fetch storyList
   }
 
   return (
@@ -37,6 +42,19 @@ function FavoriteStories() {
           storyList.map(generation => {
             return <div>
               {generation.story} {generation.prompt}
+              {
+                generation.favorite === true ? (
+                    <>
+                    <input type="checkbox" checked />
+                    <label >Favorite</label>
+                    </>
+                ) : (
+                    <>
+                    <input onClick={() => favoriteStory(generation.id)} type="checkbox"  />
+                    <label onClick={() => favoriteStory(generation.id)} >Favorite</label>
+                    </>
+                )
+              } 
             </div>
           })
         }
@@ -45,4 +63,4 @@ function FavoriteStories() {
   );
 }
 
-export default FavoriteStories;
+export default AllStories;

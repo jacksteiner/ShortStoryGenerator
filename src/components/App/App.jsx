@@ -23,6 +23,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import './App.css';
 import GeneratePage from '../GeneratePage/GeneratePage';
 import FavoriteStories from '../FavoriteStories/FavoriteStories';
+import AllStories from '../AllStories/AllStories';
 
 
 function App() {
@@ -99,6 +100,12 @@ function App() {
             <FavoriteStories />
           </Route>
 
+          <Route
+            exact
+            path='/all/stories'
+          >
+            <AllStories />
+          </Route>
           <Route
             exact
             path="/registration"

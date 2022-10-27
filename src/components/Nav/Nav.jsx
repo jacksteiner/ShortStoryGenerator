@@ -41,6 +41,10 @@ function Nav() {
             <Link className='navLink' to='/favorite/stories'>
               Favorites
             </Link>
+
+            <Link className='navLink' to='/all/stories'>
+              All Stories
+            </Link>
           </>
         )}
 
