@@ -13,24 +13,6 @@ function GeneratePage() {
   const [heading, setHeading] = useState('Generator will go here!');
   const [storyList, setStoryList] = useState([]);
   const [promptName, setPromptName] = useState('');
-  const [generated, setGenerated] = useState('');
-  const inputRef = useRef();
-
-  useEffect(() => {
-    // fetchStoryList();
-    // fetchGeneration();
-  }, []);
-
-  // test that database can get story
-  const fetchStoryList = () => {
-    console.log('fetchStoryList is called')
-    axios.get(`/api/story`).then((response) => {
-      setStoryList(response.data)
-    }).catch((e) => {
-      console.log(e);
-      alert('Something went wrong');
-    });
-  }
 
   const fetchGeneration = (e) => {
     e.preventDefault();
@@ -38,7 +20,6 @@ function GeneratePage() {
     axios.get(`/api/story/${promptName}`)
     .then(response => {
       console.log('This is the data', response.data)
-      setGenerated(response.data)
       setStoryList([response.data, ...storyList]);
       // fetchStoryList();
     }).catch(error => {
@@ -48,15 +29,17 @@ function GeneratePage() {
     setPromptName('');
   }
 
-  // const favoriteStory = (storyId) => {
-  //   // put to go here
-  //   axios.put(`/api/story/${storyId}`).then(() => {
-  //     fetchStoryList();
-  //   }).catch((e) => {
-  //     console.log(e);
-  //     alert('Something went wrong');
-  //   })
-  // }
+  const favoriteStory = (generation) => {
+    console.log('favorite story', generation)
+    // in .then call fetch storyList
+    axios.put(`/api/story/favorite/${generation.id}`).then((response) => {
+      generation.favorite = !generation.favorite
+    }).catch((e) => {
+        console.log(e);
+        alert('Something went wrong');
+    });
+  }
+
 
   return (
     <div>
@@ -87,7 +70,19 @@ function GeneratePage() {
                 <p style={{textAlign: "center", fontSize: 25, }}>{generation.story}</p>
                 <p style={{textAlign: "center", fontSize: 25, color: 'blue' }}>Prompt: {generation.prompt}</p>
                 <div className="field-row" style={{ justifyContent: 'center' }}>
-                  <button>Favorite</button>
+                <input type="checkbox" checked={generation.favorite} onChange={() => favoriteStory(generation)}/>
+                {
+                generation.favorite === true ? (
+                    <>
+                    <button onClick={() => favoriteStory(generation)}>UnFavorite</button>
+                    </>
+                ) : (
+                    <>
+                    <button onClick={() => favoriteStory(generation)}>Favorite</button>
+                    </>
+                )
+              } 
+
                 </div>
               </div>
             </div>

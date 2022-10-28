@@ -31,6 +31,12 @@ function AllStories() {
   const favoriteStory = (id) => {
     console.log('favorite story', id)
     // in .then call fetch storyList
+    axios.put(`/api/story/favorite/${id}`).then((response) => {
+        fetchStoryList(response.data)
+    }).catch((e) => {
+        console.log(e);
+        alert('Something went wrong');
+    });
   }
 
   return (
@@ -42,15 +48,16 @@ function AllStories() {
           storyList.map(generation => {
             return <div>
               {generation.story} {generation.prompt}
+              <input onChange={() => favoriteStory(generation.id)} type="checkbox"  
+              checked ={generation.favorite}/>
+
               {
                 generation.favorite === true ? (
                     <>
-                    <input type="checkbox" checked />
-                    <label >Favorite</label>
+                    <label onClick={() => favoriteStory(generation.id)} >UnFavorite</label>
                     </>
                 ) : (
                     <>
-                    <input onClick={() => favoriteStory(generation.id)} type="checkbox"  />
                     <label onClick={() => favoriteStory(generation.id)} >Favorite</label>
                     </>
                 )

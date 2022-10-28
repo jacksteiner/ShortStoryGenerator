@@ -31,7 +31,17 @@ router.get('/favorite', (req, res) => {
           res.sendStatus(500);
       })
   });
-  
+
+router.put('/favorite/:id', (req, res) => {
+    const queryText = `UPDATE "generation" SET "favorite" = NOT "favorite" WHERE "id" = $1`;
+    pool.query(queryText, [req.params.id])
+    .then(result => {
+        res.sendStatus(200);
+    }).catch(error => {
+        console.log(error);
+        res.sendStatus(500);
+    })
+})
 
 router.get('/:promptName', async (req, res) => {
     const prompt = req.params.promptName
