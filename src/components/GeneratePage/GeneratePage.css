@@ -1,3 +1,6 @@
+html,
+body,
+
 div.gallery {
     border: 1px solid #ccc;
 }
@@ -42,6 +45,6 @@ div.desc {
     clear: both;
 }
 
-.window {
-
+body {
+    background-color: #161616;
 }

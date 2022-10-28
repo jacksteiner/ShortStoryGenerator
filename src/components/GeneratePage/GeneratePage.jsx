@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './GeneratePage.css';
 import axios from 'axios';
-import "98.css"
+import {Grid, Box, Card, CardContent, CardActions, Typography} from '@mui/material'
 
 // Basic functional component structure for React with default state
 // value setup. When making a new component be sure to replace the
@@ -10,7 +10,7 @@ import "98.css"
 function GeneratePage() {
   // Using hooks we're creating local state for a "heading" variable with
   // a default value of 'Functional Component'
-  const [heading, setHeading] = useState('Generator will go here!');
+  // const [heading, setHeading] = useState('Generator will go here!');
   const [storyList, setStoryList] = useState([]);
   const [promptName, setPromptName] = useState('');
 
@@ -43,33 +43,41 @@ function GeneratePage() {
 
   return (
     <div>
-      <h2>{heading}</h2>
+      <Box>
+        <Grid
+          container
+          justifyContent={'center'}
+          alignItems='center'
+        >
       <form onSubmit={fetchGeneration}>
-        <input value={promptName} onChange={(e) => setPromptName(e.target.value)} type="text" placeholder='Prompt Goes Here!' />
+        <div>
+        <input value={promptName} onChange={(e) => setPromptName(e.target.value)} type="text" placeholder='Enter Prompt!' />
         <input type="submit" />
+        </div>
       </form>
-      {/* <div class="field-row">
-          <label for="text17">Occupation</label>
-          <input id="text17" type="text" />
-      </div> */}
-      <div>
-        {/* <h2>Test Data</h2> */}
-        {
+        </Grid>
+      </Box>
+        <div>
+          <Box>
+            <Grid
+              container
+              direction="column"
+              justifyContent="space-evenly"
+              alignItems="center"
+            >
+
+                      {
           storyList.map(generation => {
             return (
-            <div style={{ width: 700 }} className="window">
-              <div className='title-bar'>
-                <div className='title-bar-text'>Story</div>
-                <div className='title-bar-controls'>
-                  <button aria-label='Minimize' />
-                  <button aria-label='Maximize' />
-                  <button aria-label='Close' />
-                </div>
-              </div>
-              <div className='window-body'>
-                <p style={{textAlign: "center", fontSize: 25, }}>{generation.story}</p>
-                <p style={{textAlign: "center", fontSize: 25, color: 'blue' }}>Prompt: {generation.prompt}</p>
-                <div className="field-row" style={{ justifyContent: 'center' }}>
+              <div>
+              <Card 
+              variant="outlined"
+              sx={{ maxWidth: "600", backgroundColor: "#272727"}}
+              >
+              <CardContent>
+              <div>
+                <Typography color="#dddddd" align='center'>Prompt: {generation.prompt}</Typography>
+                <Typography color="#dddddd">{generation.story}</Typography>
                 <input type="checkbox" checked={generation.favorite} onChange={() => favoriteStory(generation)}/>
                 {
                 generation.favorite === true ? (
@@ -82,32 +90,17 @@ function GeneratePage() {
                     </>
                 )
               } 
-
-                </div>
               </div>
-            </div>
+              </CardContent>
+              </Card>
+              </div>
           )})
         }
-        </div> 
-        <div>
-          {/* <h2>Test Generations</h2> */}
-          {/* {
-            generated.map(generatedStory => {
-              return <div>{generatedStory.prompt}</div>
-            })
-          } */}
-        </div>
-
+        </Grid>
+        </Box>
+          </div>
     </div>
   );
 }
 
 export default GeneratePage;
-
-// Testing 98.css(this is backup code)
-// <div>
-// {generation.story}
-//  {generation.prompt}
-//  <br></br>
-// <button onClick={() => favoriteStory()}>Favorite</button>
-// </div>
