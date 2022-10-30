@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './GeneratePage.css';
 import axios from 'axios';
 import {Grid, Box, Card, CardContent, CardActions, Typography} from '@mui/material'
+import {ToggleButton, ToggleButtonGroup, TextField} from '@mui/material'
 
 // Basic functional component structure for React with default state
 // value setup. When making a new component be sure to replace the
@@ -77,8 +78,8 @@ function GeneratePage() {
               <CardContent>
               <div>
                 <Typography color="#dddddd" align='center'>Prompt: {generation.prompt}</Typography>
-                <Typography color="#dddddd">{generation.story}</Typography>
-                <input type="checkbox" checked={generation.favorite} onChange={() => favoriteStory(generation)}/>
+                <Typography color="#dddddd" align='center'>{generation.story}</Typography>
+                {/* <input type="checkbox" checked={generation.favorite} onChange={() => favoriteStory(generation)}/> */}
                 {
                 generation.favorite === true ? (
                     <>
@@ -104,3 +105,15 @@ function GeneratePage() {
 }
 
 export default GeneratePage;
+
+{/* <ToggleButtonGroup
+      color="primary"
+      value={alignment}
+      exclusive
+      onChange={handleChange}
+      aria-label="Platform"
+    ></ToggleButtonGroup> */}
+
+    // <button onClick={() => favoriteStory(generation)}>UnFavorite</button>
+
+    // <button onClick={() => favoriteStory(generation)}>Favorite</button>

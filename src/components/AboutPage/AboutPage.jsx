@@ -1,4 +1,5 @@
 import React from 'react';
+import {Grid, Box, Card, CardContent, CardActions, Typography} from '@mui/material'
 
 // This is one of our simplest components
 // It doesn't have local state,
@@ -10,6 +11,7 @@ function AboutPage() {
     <div className="container">
       <div>
         <p>This about page is for anyone to read!</p>
+        <Typography></Typography>
       </div>
     </div>
   );

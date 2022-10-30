@@ -68,6 +68,8 @@ router.get('/:promptName', async (req, res) => {
         }
         if (prompt === 'Cat'){
             story = 'My cat was staring at something on the ceiling. I looked up and saw a dark moving shadow.'
+        } if (prompt === 'Yarn'){
+            story = 'While working on a new knitting project, I misplaced my skein of yarn. After searching for it for a few minutes, I found it behind the couch...crawling with moths.'
         }
         console.log('story', story);
         // console.log('choices', choices);

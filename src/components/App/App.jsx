@@ -24,7 +24,47 @@ import './App.css';
 import GeneratePage from '../GeneratePage/GeneratePage';
 import FavoriteStories from '../FavoriteStories/FavoriteStories';
 import AllStories from '../AllStories/AllStories';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 
+const theme = createTheme({
+  palette: {
+    type: 'dark',
+    primary: {
+      main: '#4ee02d',
+    },
+    secondary: {
+      main: '#ffffff',
+    },
+    background: {
+      default: '#161616',
+    },
+    error: {
+      main: '#ff1200',
+    },
+    info: {
+      main: '#ffffff',
+    },
+    success: {
+      main: '#ffffff',
+    },
+  },
+  typography: {
+    fontSize: 30,
+    fontFamily: 'Amatic SC',
+    h1: {
+      fontSize: '6rem',
+    },
+    h2: {
+      fontSize: '5.1rem',
+    },
+    h3: {
+      fontSize: '4rem',
+    },
+    h4: {
+      fontSize: '3rem',
+    },
+  },
+});
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +76,7 @@ function App() {
   }, [dispatch]);
 
   return (
+    <ThemeProvider theme={theme}>
     <Router>
       <div>
         <Nav />
@@ -143,6 +184,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+    </ThemeProvider>
   );
 }
 

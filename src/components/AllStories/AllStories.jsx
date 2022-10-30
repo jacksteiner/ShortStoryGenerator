@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+import {Grid, Box, Card, CardContent, CardActions, Typography, Button} from '@mui/material'
 
 // Basic functional component structure for React with default state
 // value setup. When making a new component be sure to replace the
@@ -41,31 +42,55 @@ function AllStories() {
 
   return (
     <div>
-      <h2>{heading}</h2>
-      <div>
-        <h2>Test Data</h2>
-        {
+        <div>
+          <Box>
+            <Grid
+              container wrap='nowrap'
+              justify = 'center'
+              direction="column"
+              justifyContent="space-evenly"
+              alignItems="center"
+              minWidth={500}
+            >
+                      {
           storyList.map(generation => {
-            return <div>
-              {generation.story} {generation.prompt}
-              <input onChange={() => favoriteStory(generation.id)} type="checkbox"  
-              checked ={generation.favorite}/>
-
-              {
+            return (
+              <div>
+            <Grid
+            container spacing = {1} wrap='nowrap'
+            minWidth={700}
+            maxWidth={600}
+            >
+              <Card 
+              variant="outlined"
+              sx={{ maxWidth: "600", backgroundColor: "#272727"}}
+              >
+              <CardContent>
+              <div>
+                <Typography color="primary" align='center'>Prompt: {generation.prompt}</Typography>
+                <Typography color="#dddddd" align='center'>{generation.story}</Typography>
+                <input type="checkbox" checked={generation.favorite} onChange={() => favoriteStory(generation)}/>
+                {
                 generation.favorite === true ? (
                     <>
-                    <label onClick={() => favoriteStory(generation.id)} >UnFavorite</label>
+                    <button onClick={() => favoriteStory(generation)}>UnFavorite</button>                 
                     </>
                 ) : (
                     <>
-                    <label onClick={() => favoriteStory(generation.id)} >Favorite</label>
+                    <button onClick={() => favoriteStory(generation.id)}>Favorite</button>
                     </>
                 )
               } 
-            </div>
-          })
+              </div>
+              </CardContent>
+              </Card>
+              </Grid>
+              </div>
+          )})
         }
-        </div> 
+        </Grid>
+        </Box>
+          </div>
     </div>
   );
 }
