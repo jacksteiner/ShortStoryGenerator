@@ -29,7 +29,7 @@ function FavoriteStories() {
       alert('Something went wrong');
     });
   }
-  
+
   const favoriteStory = (id) => {
     console.log('favorite story', id)
     // in .then call fetch storyList
@@ -67,20 +67,26 @@ function FavoriteStories() {
               >
               <CardContent>
               <div>
-                <Typography color="#dddddd" align='center'>Prompt: {generation.prompt}</Typography>
+                <Typography color="primary" align='center'>Prompt: {generation.prompt}</Typography>
                 <Typography color="#dddddd" align='center'>{generation.story}</Typography>
-                <input type="checkbox" checked={generation.favorite} onChange={() => favoriteStory(generation)}/>
+                {/* <input type="checkbox" checked={generation.favorite} onChange={() => favoriteStory(generation)}/> */}
                 {
                 generation.favorite === true ? (
                     <>
-                    <button onClick={() => favoriteStory(generation.id)}>UnFavorite</button>
+                    <CardActions style={{justifyContent: 'center'}}>
+                    {/* <button onClick={() => favoriteStory(generation.id)}>UnFavorite</button>  */}
+                    <Button align="center" onClick={() => favoriteStory(generation.id)}>UnFavorite</Button>
+                    </CardActions>
                     </>
                 ) : (
                     <>
-                    <button onClick={() => favoriteStory(generation.id)}>Favorite</button>
+                    <CardActions style={{justifyContent: 'center'}}>
+                    {/* <button onClick={() => favoriteStory(generation.id)}>Favorite</button> */}
+                    <Button align="center" onClick={() => favoriteStory(generation.id)}>Favorite</Button>
+                    </CardActions>
                     </>
                 )
-              } 
+              }  
               </div>
               </CardContent>
               </Card>

@@ -22,7 +22,7 @@ function Nav() {
         {!user.id && (
           // If there's no user, show login/registration links
           <Link className="navLink" to="/login">
-            Login / Register
+            <Typography>Login / Register</Typography>
           </Link>
         )}
 
@@ -31,26 +31,30 @@ function Nav() {
           <>
             {/* <Link className="navLink" to="/user">
               Home
-            </Link> */}
+            </Link>
 
-            {/* <Link className="navLink" to="/info">
+            <Link className="navLink" to="/info">
               Info Page
             </Link> */}
 
             <Link className='navLink' to='/generate/page'>
-              Generate
+              <Typography>Generate</Typography>
             </Link>
 
             <Link className='navLink' to='/all/stories'>
-              All Stories
+              <Typography>All Stories</Typography>
             </Link>
 
             <Link className='navLink' to='/favorite/stories'>
-              Favorites
+              <Typography>Favorites</Typography>
+            </Link>
+
+            <Link className='navLink' to="/examples">
+              <Typography>Examples</Typography>
             </Link>
 
             <Link className="navLink" to="/about">
-              About
+              <Typography>About</Typography>
             </Link>
 
             <LogOutButton className="navLink" />

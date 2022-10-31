@@ -10,8 +10,8 @@ function AboutPage() {
   return (
     <div className="container">
       <div>
-        <p>This about page is for anyone to read!</p>
-        <Typography></Typography>
+        {/* <p>This about page is for anyone to read!</p> */}
+        <Typography color="#dddddd" align='center'>Technology Used</Typography>
       </div>
     </div>
   );

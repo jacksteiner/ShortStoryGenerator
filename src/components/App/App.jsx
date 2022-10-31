@@ -24,6 +24,7 @@ import './App.css';
 import GeneratePage from '../GeneratePage/GeneratePage';
 import FavoriteStories from '../FavoriteStories/FavoriteStories';
 import AllStories from '../AllStories/AllStories';
+import Examples from '../Examples/Examples';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -147,6 +148,14 @@ function App() {
           >
             <AllStories />
           </Route>
+
+          <Route
+            exact
+            path='/examples'
+          >
+            <Examples />
+          </Route>
+
           <Route
             exact
             path="/registration"

@@ -4,6 +4,7 @@ import './GeneratePage.css';
 import axios from 'axios';
 import {Grid, Box, Card, CardContent, CardActions, Typography} from '@mui/material'
 import {ToggleButton, ToggleButtonGroup, TextField} from '@mui/material'
+import { useTheme } from '@mui/material/styles';
 
 // Basic functional component structure for React with default state
 // value setup. When making a new component be sure to replace the
@@ -14,6 +15,7 @@ function GeneratePage() {
   // const [heading, setHeading] = useState('Generator will go here!');
   const [storyList, setStoryList] = useState([]);
   const [promptName, setPromptName] = useState('');
+  const theme = useTheme();
 
   const fetchGeneration = (e) => {
     e.preventDefault();
@@ -52,8 +54,17 @@ function GeneratePage() {
         >
       <form onSubmit={fetchGeneration}>
         <div>
-        <input value={promptName} onChange={(e) => setPromptName(e.target.value)} type="text" placeholder='Enter Prompt!' />
-        <input type="submit" />
+        <TextField
+        sx={{borderColor: 'primary' }}
+        variant='outlined'
+        label='Prompt' 
+        backgroundColor='#dddddd'
+        value={promptName}
+        onChange={(e) => setPromptName(e.target.value)}
+        >
+        </TextField>
+        {/* <input value={promptName} onChange={(e) => setPromptName(e.target.value)} type="text" placeholder='Enter Prompt!' /> */}
+        {/* <input type="submit" /> */}
         </div>
       </form>
         </Grid>
