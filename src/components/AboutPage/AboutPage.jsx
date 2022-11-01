@@ -11,7 +11,13 @@ function AboutPage() {
     <div className="container">
       <div>
         {/* <p>This about page is for anyone to read!</p> */}
-        <Typography color="#dddddd" align='center'>Technology Used</Typography>
+        <Typography color="primary" align='center'>Technology Used:</Typography>
+        <Typography color="#dddddd" align='center'>React</Typography>
+        <Typography color="#dddddd" align='center'>Redux</Typography>
+        <Typography color="#dddddd" align='center'>Express</Typography>
+        <Typography color="#dddddd" align='center'>Node</Typography>
+        <Typography color="#dddddd" align='center'>Open Ai Api</Typography>
+        <Typography color="#dddddd" align='center'>Material Ui</Typography>
       </div>
     </div>
   );

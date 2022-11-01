@@ -2,9 +2,9 @@
 
 html,
 body,
-#react-root {
+/* #react-root {
   height: 100%;
-}
+} */
 
 body {
   font-family: 'Amatic';
@@ -113,6 +113,23 @@ input {
   margin-bottom: 10px;
 }
 
+.MuiInputBase-input-7325 {
+  font: inherit;
+  color: currentColor;
+  width: 100%;
+  border: 0;
+  height: 1.1876em;
+  margin: 0;
+  display: block;
+  padding: 6px 0 7px;
+  min-width: 0;
+  background: none;
+  box-sizing: content-box;
+  animation-name: mui-auto-fill-cancel;
+  letter-spacing: inherit;
+  animation-duration: 10ms;
+  -webkit-tap-highlight-color: transparent;
+}
 
 /* 98.css */
 

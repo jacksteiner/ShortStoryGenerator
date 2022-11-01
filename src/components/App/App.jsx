@@ -27,6 +27,7 @@ import AllStories from '../AllStories/AllStories';
 import Examples from '../Examples/Examples';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 
+
 const theme = createTheme({
   palette: {
     type: 'dark',
@@ -65,6 +66,14 @@ const theme = createTheme({
       fontSize: '3rem',
     },
   },
+
+  textfield: {
+    color: 'primary',
+  },
+
+  testName: {
+    backgroundColor: 'pink'
+  }
 });
 
 function App() {

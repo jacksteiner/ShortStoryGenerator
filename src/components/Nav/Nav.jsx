@@ -4,6 +4,8 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
 import { Typography } from '@mui/material'
+// import Squiggle from './Squiggle'
+
 
 function Nav() {
   const user = useSelector((store) => store.user);
@@ -16,6 +18,7 @@ function Nav() {
         className='nav-title'
         variant='h4'
         >Horror Story Generator</Typography>
+        {/* <Squiggle /> */}
       </Link>
       <div>
         {/* If no user is logged in, show these links */}

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './GeneratePage.css';
 import axios from 'axios';
 import {Grid, Box, Card, CardContent, CardActions, Typography} from '@mui/material'
-import {ToggleButton, ToggleButtonGroup, TextField} from '@mui/material'
+import {ToggleButton, ToggleButtonGroup, TextField, Button, } from '@mui/material'
 import { useTheme } from '@mui/material/styles';
 
 // Basic functional component structure for React with default state
@@ -52,13 +52,20 @@ function GeneratePage() {
           justifyContent={'center'}
           alignItems='center'
         >
+      <Card>
       <form onSubmit={fetchGeneration}>
         <div>
         <TextField
-        sx={{borderColor: 'primary' }}
+        // InputProps={{
+        //   classes: {testName: classes.testName}
+        //  }}
+        // sx={{borderColor: 'primary' }}
         variant='outlined'
-        label='Prompt' 
-        backgroundColor='#dddddd'
+        label='Prompt'
+        color='primary'
+        // backgroundColor='#dddddd'
+        // className='MuiInputBase-input-152'
+        className='textfield'
         value={promptName}
         onChange={(e) => setPromptName(e.target.value)}
         >
@@ -67,6 +74,7 @@ function GeneratePage() {
         {/* <input type="submit" /> */}
         </div>
       </form>
+      </Card>
         </Grid>
       </Box>
         <div>
@@ -98,7 +106,10 @@ function GeneratePage() {
                     </>
                 ) : (
                     <>
-                    <button onClick={() => favoriteStory(generation)}>Favorite</button>
+                     <CardActions style={{justifyContent: 'center'}}>
+                    {/* <button onClick={() => favoriteStory(generation.id)}>Favorite</button> */}
+                    <Button className='generateButton' color='primary' type='inherit' align="center" onClick={() => favoriteStory(generation)}>Favorite</Button>
+                    </CardActions>
                     </>
                 )
               } 
