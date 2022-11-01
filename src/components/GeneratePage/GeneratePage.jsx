@@ -102,7 +102,8 @@ function GeneratePage() {
                 {
                 generation.favorite === true ? (
                     <>
-                    <button onClick={() => favoriteStory(generation)}>UnFavorite</button>
+                    {/* <button onClick={() => favoriteStory(generation)}>UnFavorite</button> */}
+                    <Button className='generateButton' color='primary' type='inherit' align="center" onClick={() => favoriteStory(generation)}>UnFavorite</Button>
                     </>
                 ) : (
                     <>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
+import { Typography } from '@mui/material'
 
 function LoginForm() {
   const [username, setUsername] = useState('');
@@ -26,7 +27,7 @@ function LoginForm() {
 
   return (
     <form className="formPanel" onSubmit={login}>
-      <h2>Login</h2>
+      <Typography>Log In</Typography>
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
           {errors.loginMessage}
@@ -34,7 +35,7 @@ function LoginForm() {
       )}
       <div>
         <label htmlFor="username">
-          Username:
+          <Typography fontSize={25}>Username:</Typography>
           <input
             type="text"
             name="username"
@@ -46,7 +47,7 @@ function LoginForm() {
       </div>
       <div>
         <label htmlFor="password">
-          Password:
+          <Typography>Password:</Typography>
           <input
             type="password"
             name="password"

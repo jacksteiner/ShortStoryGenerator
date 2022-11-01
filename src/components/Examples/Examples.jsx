@@ -18,9 +18,9 @@ function Examples() {
              variant="outlined"
              sx={{ maxWidth: "600", backgroundColor: "#272727"}}
             >
-                <CardContent style={{justifyContent: 'center'}}>
+                <CardContent style={{justifyContent: 'center', maxWidth: '600',}}>
                     <Typography color='primary' align='center'>Prompt: Fractal</Typography>
-                    <Typography color='#dddddd' align='center'>I keep seeing fractals in my tv static. I think its trying to tell me something</Typography>
+                    <Typography color='#dddddd' align='center'>I keep seeing fractals in my tv static. I think they're trying to tell me something</Typography>
                     <CardMedia style={{justifyContent: 'center'}}
                     align='center'
                     ><iframe src="https://giphy.com/embed/xgYiW3wKaV9Bg1TN4c" width="480" height="270" frameBorder="0" class="giphy-embed" align='center' allowFullScreen></iframe><p><a href="https://giphy.com/gifs/fractal-kaleidoscope-tvstatic-xgYiW3wKaV9Bg1TN4c"></a></p></CardMedia>
