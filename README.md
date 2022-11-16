@@ -8,4 +8,4 @@ Favorite Stories <img width="1510" alt="Screen Shot 2022-11-16 at 2 21 15 PM" sr
 
 Gif made with inspiration from the generator!
 
-![ShortStoryGeneratorFractalGif](https://user-images.githubusercontent.com/101478279/202287110-b817e943-1bba-400c-ae3d-055d53c6ad0a.gif)
+![GifForGithub](https://user-images.githubusercontent.com/101478279/202287550-1e38be82-93b9-4571-af04-abac79763991.gif)
