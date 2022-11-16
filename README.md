@@ -7,4 +7,5 @@ All stories are saved <img width="1509" alt="Screen Shot 2022-11-16 at 2 19 03 P
 Favorite Stories <img width="1510" alt="Screen Shot 2022-11-16 at 2 21 15 PM" src="https://user-images.githubusercontent.com/101478279/202286183-190b9cea-77af-4814-9016-fe1b999017ea.png">
 
 Gif made with inspiration from the generator!
+
 ![ShortStoryGeneratorFractalGif](https://user-images.githubusercontent.com/101478279/202287110-b817e943-1bba-400c-ae3d-055d53c6ad0a.gif)
